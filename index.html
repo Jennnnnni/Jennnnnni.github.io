@@ -119,6 +119,9 @@
             cursor: pointer;
             position: relative;
             display: inline-block;
+            z-index: 10; /* 提升层级，防止被其他透明容器盖住 */
+            user-select: none; /* 禁用文字选中，确保每次点击都能纯粹生效 */
+            -webkit-user-select: none; /* 兼容 Safari 等浏览器 */
         }
         
         /* 二维码预览浮层 */
@@ -154,6 +157,7 @@
             position: absolute;
             bottom: -20px;
             left: 0;
+            pointer-events: none; /* 新增这行：让它不再拦截鼠标点击 */
         }
         .contact-item:hover .copy-hint { opacity: 1; }
 
@@ -792,5 +796,6 @@
 </body>
 
 </html>
+
 
 

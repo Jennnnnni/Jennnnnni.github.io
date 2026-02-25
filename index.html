@@ -118,7 +118,9 @@
         .contact-item {
             cursor: pointer;
             position: relative;
-            display: inline-block;
+            display: flex;          /* 改为 flex 布局 */
+            flex-direction: column; /* 让内容垂直排列 */
+            width: fit-content;     /* 宽度自适应内容，不占满整行 */
             z-index: 10; /* 提升层级，防止被其他透明容器盖住 */
             user-select: none; /* 禁用文字选中，确保每次点击都能纯粹生效 */
             -webkit-user-select: none; /* 兼容 Safari 等浏览器 */
@@ -796,6 +798,7 @@
 </body>
 
 </html>
+
 
 
 

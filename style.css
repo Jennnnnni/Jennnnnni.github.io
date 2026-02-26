@@ -139,15 +139,15 @@ body {
     .exp-scroll-area { padding-top: 120px; padding-bottom: 120px; }
 }
 /* =======================================================
-   图片页：PC端背景大字特效
-   仅在支持鼠标悬停的设备（PC）上生效，完美避开手机端双击陷阱
+   图片页：PC端背景大字特效 (完美居中无错位版)
    ======================================================= */
 @media (hover: hover) {
-    .hover-trigger-daily:hover ~ .bg-text-container .bg-text-daily {
+    /* 当悬停按钮时，触发紧跟在按钮后面的水印容器里的文字动画 */
+    .hover-trigger-daily:hover + div .bg-text-daily {
         opacity: 1;
         transform: translateY(0) scale(1.02);
     }
-    .hover-trigger-prompt:hover ~ .bg-text-container .bg-text-prompt {
+    .hover-trigger-prompt:hover + div .bg-text-prompt {
         opacity: 1;
         transform: translateY(0) scale(1.02);
     }

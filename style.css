@@ -53,6 +53,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* 【核心修复】防止导航层的透明盒子遮挡手机屏幕上下边缘的滑动 */
+    pointer-events: none; 
 }
 
 .nav-link, .footer-link {
@@ -61,7 +63,8 @@ body {
     text-decoration: none;
     color: black;
     font-weight: 700;
-    pointer-events: auto;
+    /* 仅允许文字本体可以点击 */
+    pointer-events: auto; 
 }
 .nav-link:hover, .footer-link:hover { opacity: 0.5; }
 

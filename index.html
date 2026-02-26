@@ -2,7 +2,8 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no, email=no">
     <title>JENI - Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
@@ -72,15 +73,15 @@
         <div id="images-page" class="page justify-center items-center">
             <div class="relative z-[105] flex flex-col items-center space-y-16 md:space-y-24 w-full">
                 
-                <a href="javascript:void(0)" onclick="navigateTo('daily-creation')" class="group relative text-4xl md:text-6xl lg:text-7xl font-black italic uppercase tracking-tighter text-black transition-all duration-500 hover:text-gray-400 hover:scale-105 w-full text-center block">
-                    <span class="relative z-10">DAILY CREATION</span>
-                    <span class="fixed inset-0 flex justify-center items-center pointer-events-none z-0 opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-8 group-hover:translate-y-0 text-[18vw] md:text-[12vw] font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-b from-gray-300 to-gray-50 whitespace-nowrap">每日创作</span>
-                </a>
+                <button type="button" onclick="navigateTo('daily-creation')" class="group relative text-4xl md:text-6xl lg:text-7xl font-black italic uppercase tracking-tighter text-black transition-all duration-500 hover:text-gray-400 hover:scale-105 w-full text-center block outline-none">
+                    <span class="relative z-10 pointer-events-none">DAILY CREATION</span>
+                    <span class="fixed inset-0 flex justify-center items-center pointer-events-none z-0 opacity-0 md:group-hover:opacity-100 transition-all duration-700 translate-y-8 md:group-hover:translate-y-0 text-[18vw] md:text-[12vw] font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-b from-gray-300 to-gray-50 whitespace-nowrap">每日创作</span>
+                </button>
                 
-                <a href="javascript:void(0)" onclick="navigateTo('prompt-experiment')" class="group relative text-4xl md:text-6xl lg:text-7xl font-black italic uppercase tracking-tighter text-black transition-all duration-500 hover:text-gray-400 hover:scale-105 w-full text-center block">
-                    <span class="relative z-10">PROMPT: EXPERIMENT</span>
-                    <span class="fixed inset-0 flex justify-center items-center pointer-events-none z-0 opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-8 group-hover:translate-y-0 text-[18vw] md:text-[12vw] font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-b from-gray-300 to-gray-50 whitespace-nowrap">提示词实验</span>
-                </a>
+                <button type="button" onclick="navigateTo('prompt-experiment')" class="group relative text-4xl md:text-6xl lg:text-7xl font-black italic uppercase tracking-tighter text-black transition-all duration-500 hover:text-gray-400 hover:scale-105 w-full text-center block outline-none">
+                    <span class="relative z-10 pointer-events-none">PROMPT: EXPERIMENT</span>
+                    <span class="fixed inset-0 flex justify-center items-center pointer-events-none z-0 opacity-0 md:group-hover:opacity-100 transition-all duration-700 translate-y-8 md:group-hover:translate-y-0 text-[18vw] md:text-[12vw] font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-b from-gray-300 to-gray-50 whitespace-nowrap">提示词实验</span>
+                </button>
                 
             </div>
         </div>
@@ -93,7 +94,7 @@
                             <h1 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase mb-2">Daily Creation.</h1>
                             <p class="text-gray-400 text-sm uppercase tracking-[0.3em]">A record of visual experiments</p>
                         </div>
-                        <a href="javascript:void(0)" onclick="navigateTo('images')" class="text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-colors">← Back to Hub</a>
+                        <button type="button" onclick="navigateTo('images')" class="text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-colors outline-none">← Back to Hub</button>
                     </div>
                     <div id="daily-creation-list-container"></div>
                 </div>
@@ -108,7 +109,7 @@
                             <h1 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase mb-2">Prompt.</h1>
                             <p class="text-gray-400 text-sm uppercase tracking-[0.3em]">Experiment & Breakdown</p>
                         </div>
-                        <a href="javascript:void(0)" onclick="navigateTo('images')" class="text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-colors">← Back to Hub</a>
+                        <button type="button" onclick="navigateTo('images')" class="text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-colors outline-none">← Back to Hub</button>
                     </div>
                     <div id="prompt-list-container" class="space-y-24"></div>
                 </div>
@@ -141,8 +142,8 @@
                             <div>
                                 <span class="text-xs font-bold text-gray-300 uppercase tracking-widest block mb-2">Email Address</span>
                                 <div class="flex items-center gap-3">
-                                    <span class="text-xl md:text-2xl font-medium border-b border-black pb-1">funkyjeni007@163.com</span>
-                                    <button onclick="copyToClipboard('funkyjeni007@163.com', 'Email')" class="p-2 hover:bg-gray-100 rounded-md transition-colors cursor-pointer text-gray-400 hover:text-black" title="复制邮箱">
+                                    <span class="text-xl md:text-2xl font-medium border-b border-black pb-1 select-all">funkyjeni007@163.com</span>
+                                    <button type="button" onclick="copyToClipboard('funkyjeni007@163.com', 'Email')" class="p-2 hover:bg-gray-100 rounded-md transition-colors cursor-pointer text-gray-400 hover:text-black outline-none" title="复制邮箱">
                                         <svg class="pointer-events-none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                     </button>
                                 </div>
@@ -151,8 +152,8 @@
                             <div class="relative group">
                                 <span class="text-xs font-bold text-gray-300 uppercase tracking-widest block mb-2">WeChat</span>
                                 <div class="flex items-center gap-3">
-                                    <span class="text-xl md:text-2xl font-medium border-b border-black pb-1">Jeni_Qin</span>
-                                    <button onclick="copyToClipboard('Jeni_Qin', 'WeChat ID')" class="p-2 hover:bg-gray-100 rounded-md transition-colors cursor-pointer text-gray-400 hover:text-black" title="复制微信">
+                                    <span class="text-xl md:text-2xl font-medium border-b border-black pb-1 select-all">Jeni_Qin</span>
+                                    <button type="button" onclick="copyToClipboard('Jeni_Qin', 'WeChat ID')" class="p-2 hover:bg-gray-100 rounded-md transition-colors cursor-pointer text-gray-400 hover:text-black outline-none" title="复制微信">
                                         <svg class="pointer-events-none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                     </button>
                                 </div>

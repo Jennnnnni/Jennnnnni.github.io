@@ -71,23 +71,28 @@
         </div>
 
         <div id="images-page" class="page justify-center items-center">
-            <div class="relative w-full flex flex-col items-center space-y-16 md:space-y-24 z-[105]">
+            <div class="w-full flex flex-col items-center space-y-24 md:space-y-32 z-[105]">
                 
-                <button type="button" onclick="navigateTo('daily-creation')" class="hover-trigger-daily relative z-10 text-4xl md:text-6xl lg:text-7xl font-black italic uppercase tracking-tighter text-black transition-all duration-500 hover:text-gray-400 hover:scale-105 w-full text-center block outline-none">
-                    DAILY CREATION
-                </button>
-                
-                <button type="button" onclick="navigateTo('prompt-experiment')" class="hover-trigger-prompt relative z-10 text-4xl md:text-6xl lg:text-7xl font-black italic uppercase tracking-tighter text-black transition-all duration-500 hover:text-gray-400 hover:scale-105 w-full text-center block outline-none">
-                    PROMPT: EXPERIMENT
-                </button>
-                
-                <div class="bg-text-container fixed inset-0 flex justify-center items-center pointer-events-none z-0 overflow-hidden">
-                    <div class="bg-text-daily absolute text-[18vw] md:text-[12vw] font-bold uppercase tracking-widest opacity-0 transition-all duration-700 translate-y-8 whitespace-nowrap select-none bg-gradient-to-b from-gray-300 to-gray-50 bg-clip-text text-transparent">每日创作</div>
-                    <div class="bg-text-prompt absolute text-[18vw] md:text-[12vw] font-bold uppercase tracking-widest opacity-0 transition-all duration-700 translate-y-8 whitespace-nowrap select-none bg-gradient-to-b from-gray-300 to-gray-50 bg-clip-text text-transparent">提示词实验</div>
+                <div class="relative w-full flex justify-center items-center">
+                    <button type="button" onclick="navigateTo('daily-creation')" class="hover-trigger-daily relative z-10 text-4xl md:text-6xl lg:text-7xl font-black italic uppercase tracking-tighter text-black transition-all duration-500 hover:text-gray-400 hover:scale-105 outline-none bg-transparent border-none cursor-pointer">
+                        DAILY CREATION
+                    </button>
+                    <div class="absolute inset-0 flex justify-center items-center pointer-events-none z-0">
+                        <span class="bg-text-daily text-[18vw] md:text-[12vw] font-bold uppercase tracking-widest opacity-0 transition-all duration-700 translate-y-8 select-none bg-gradient-to-b from-gray-300 to-gray-50 bg-clip-text text-transparent whitespace-nowrap drop-shadow-sm">每日创作</span>
+                    </div>
                 </div>
+
+                <div class="relative w-full flex justify-center items-center">
+                    <button type="button" onclick="navigateTo('prompt-experiment')" class="hover-trigger-prompt relative z-10 text-4xl md:text-6xl lg:text-7xl font-black italic uppercase tracking-tighter text-black transition-all duration-500 hover:text-gray-400 hover:scale-105 outline-none bg-transparent border-none cursor-pointer">
+                        PROMPT: EXPERIMENT
+                    </button>
+                    <div class="absolute inset-0 flex justify-center items-center pointer-events-none z-0">
+                        <span class="bg-text-prompt text-[18vw] md:text-[12vw] font-bold uppercase tracking-widest opacity-0 transition-all duration-700 translate-y-8 select-none bg-gradient-to-b from-gray-300 to-gray-50 bg-clip-text text-transparent whitespace-nowrap drop-shadow-sm">提示词实验</span>
+                    </div>
+                </div>
+                
             </div>
         </div>
-
         <div id="daily-creation-page" class="page">
             <div class="exp-scroll-area no-scrollbar">
                 <div class="content-wrapper">
@@ -206,4 +211,5 @@
     <script src="main.js"></script>
 </body>
 </html>
+
 

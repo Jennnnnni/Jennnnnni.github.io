@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JENI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white selection:bg-black selection:text-white">
+
+    <div class="nav-glass-top"></div>
+    <div class="nav-glass-bottom"></div>
+
+    <nav class="interactive-layer top-0">
+        <span class="text-xl font-black tracking-widest uppercase cursor-pointer" onclick="navigateTo('home')">JENI</span>
+        <a id="nav-toggle" href="javascript:void(0)" class="nav-link text-lg" onclick="toggleBio()">个人简介</a>
+    </nav>
+
+    <footer class="interactive-layer bottom-0">
+        <a href="javascript:void(0)" class="footer-link" onclick="navigateTo('experience')">经历</a>
+        <a href="javascript:void(0)" class="footer-link" onclick="navigateTo('images')">图片</a>
+        <a href="javascript:void(0)" class="footer-link" onclick="navigateTo('video')">视频</a>
+        <a href="javascript:void(0)" class="footer-link" onclick="navigateTo('contact')">联系</a>
+    </footer>
+
+    <div class="relative flex-1">
+        
+        <div id="home-page" class="page active justify-center items-center">
+            <div class="text-center px-10">
+                <div class="inline-flex items-center">
+                    <h2 id="home-typing-text" class="text-xl md:text-2xl leading-relaxed"></h2>
+                    <span id="cursor" class="typing-cursor"></span>
+                </div>
+            </div>
+        </div>
+
+        <div id="bio-page" class="page justify-center items-center">
+            <div class="content-wrapper">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-y-16 md:gap-y-32 gap-x-12 md:gap-x-24 w-full">
+                    <div>
+                        <h3 class="text-5xl md:text-6xl font-black tracking-tight mb-2">覃乾峰</h3>
+                        <p class="text-xl italic text-gray-400">/ Jeni</p>
+                    </div>
+                    <div class="md:text-right flex flex-col justify-start md:pt-4">
+                        <div class="text-[10px] md:text-xs uppercase tracking-[0.4em] text-gray-300 leading-loose">
+                            Digital Media Arts<br>
+                            AI Visual Researcher
+                        </div>
+                    </div>
+                    <div class="leading-loose text-[15px] text-gray-800 max-w-lg">
+                        <p class="mb-6">您好，数字媒体艺术专业出身的我，过去几年一直沉浸在<br class="hidden lg:block">数字内容与 AI 影像的交叉领域。</p>
+                        <p class="text-gray-500">我习惯将自己定位为一名“技术与审美的翻译官”。在实际项目<br class="hidden lg:block">中，我倾向于将 Midjourney、ComfyUI、Veo3、<br class="hidden lg:block">即梦等 AI 工具视作画笔的延伸。</p>
+                    </div>
+                    <div class="max-w-lg flex flex-col justify-start">
+                        <div class="italic text-[15px] text-black leading-loose border-t border-black pt-6">
+                            比起单纯的技术堆砌，我更看重如何利用叙事策略与分镜构成，我一直<br class="hidden lg:block">在摸索如何更好地与 AI 的不确定性共处，试图在生产效率与作品质感之<br class="hidden lg:block">间，寻找一种更贴合实际需求的表达。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="experience-page" class="page">
+            <div class="exp-scroll-area no-scrollbar">
+                <div id="experience-list-container" class="content-wrapper">
+                    </div>
+            </div>
+        </div>
+
+        <div id="images-page" class="page justify-center items-center">
+            <div class="absolute inset-0 flex justify-center items-center pointer-events-none overflow-hidden z-0">
+                <div id="bg-text-daily" class="absolute text-[18vw] md:text-[12vw] font-bold uppercase tracking-widest opacity-0 transition-all duration-700 transform translate-y-8 whitespace-nowrap select-none bg-gradient-to-b from-gray-300 to-gray-50 bg-clip-text text-transparent">每日创作</div>
+                <div id="bg-text-prompt" class="absolute text-[18vw] md:text-[12vw] font-bold uppercase tracking-widest opacity-0 transition-all duration-700 transform translate-y-8 whitespace-nowrap select-none bg-gradient-to-b from-gray-300 to-gray-50 bg-clip-text text-transparent">提示词实验</div>
+            </div>
+            <div class="relative z-10 flex flex-col items-center space-y-16 md:space-y-24">
+                <a href="javascript:void(0)" onclick="navigateTo('daily-creation')" class="text-4xl md:text-6xl lg:text-7xl font-black italic uppercase tracking-tighter text-black transition-all duration-500 hover:text-gray-400 hover:scale-105" onmouseenter="document.getElementById('bg-text-daily').style.opacity = '1'; document.getElementById('bg-text-daily').style.transform = 'translateY(0) scale(1.02)';" onmouseleave="document.getElementById('bg-text-daily').style.opacity = '0'; document.getElementById('bg-text-daily').style.transform = 'translateY(2rem) scale(1)';">DAILY CREATION</a>
+                <a href="javascript:void(0)" onclick="navigateTo('prompt-experiment')" class="text-4xl md:text-6xl lg:text-7xl font-black italic uppercase tracking-tighter text-black transition-all duration-500 hover:text-gray-400 hover:scale-105" onmouseenter="document.getElementById('bg-text-prompt').style.opacity = '1'; document.getElementById('bg-text-prompt').style.transform = 'translateY(0) scale(1.02)';" onmouseleave="document.getElementById('bg-text-prompt').style.opacity = '0'; document.getElementById('bg-text-prompt').style.transform = 'translateY(2rem) scale(1)';">PROMPT: EXPERIMENT</a>
+            </div>
+        </div>
+
+        <div id="daily-creation-page" class="page">
+            <div class="exp-scroll-area no-scrollbar">
+                <div class="content-wrapper">
+                    <div class="flex justify-between items-end border-b border-black pb-6 mb-16">
+                        <div>
+                            <h1 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase mb-2">Daily Creation.</h1>
+                            <p class="text-gray-400 text-sm uppercase tracking-[0.3em]">A record of visual experiments</p>
+                        </div>
+                        <a href="javascript:void(0)" onclick="navigateTo('images')" class="text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-colors">← Back to Hub</a>
+                    </div>
+                    <div id="daily-creation-list-container"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="prompt-experiment-page" class="page">
+            <div class="exp-scroll-area no-scrollbar">
+                <div class="content-wrapper">
+                    <div class="flex justify-between items-end border-b border-black pb-6 mb-16">
+                        <div>
+                            <h1 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase mb-2">Prompt.</h1>
+                            <p class="text-gray-400 text-sm uppercase tracking-[0.3em]">Experiment & Breakdown</p>
+                        </div>
+                        <a href="javascript:void(0)" onclick="navigateTo('images')" class="text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-colors">← Back to Hub</a>
+                    </div>
+                    <div id="prompt-list-container" class="space-y-24"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="video-page" class="page">
+            <div class="exp-scroll-area no-scrollbar">
+                <div class="content-wrapper">
+                    <div class="border-b border-black pb-6 mb-16">
+                        <h1 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase mb-2">Selected Works.</h1>
+                        <p class="text-gray-400 text-sm uppercase tracking-[0.3em]">Motion & AIGC Video</p>
+                    </div>
+                    <div id="video-list-container" class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="contact-page" class="page justify-center items-center">
+            <div class="content-wrapper grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
+                <div class="md:text-right md:border-r md:border-gray-100 md:pr-12">
+                    <h1 class="text-5xl md:text-7xl font-black italic tracking-tighter uppercase mb-4">Contact.</h1>
+                    <p class="text-gray-400 text-sm uppercase tracking-[0.3em]">期待您的联系</p>
+                </div>
+                <div class="flex flex-col justify-center items-start space-y-16">
+                    <div class="contact-item flex flex-col items-start w-max" onclick="copyToClipboard('funkyjeni007@163.com', 'Email')">
+                        <span class="text-xs font-bold text-gray-300 uppercase tracking-widest block mb-2 pointer-events-none">Email Address</span>
+                        <span class="text-xl md:text-2xl font-medium border-b border-black pb-1 block pointer-events-none">funkyjeni007@163.com</span>
+                        <span class="copy-hint">Click to copy</span>
+                    </div>
+                    <div class="contact-item" onclick="copyToClipboard('Jeni_Qin', 'WeChat ID')">
+                        <span class="text-xs font-bold text-gray-300 uppercase tracking-widest block mb-2">WeChat</span>
+                        <span class="text-xl md:text-2xl font-medium border-b border-black pb-1">Jeni_Qin</span>
+                        <span class="copy-hint">Click to copy</span>
+                        <div class="qr-preview">
+                            <img src="Jeni_wechat_qrcode.jpg" alt="WeChat QR Code" class="w-full h-full object-contain" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Jeni_Qin'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="copy-toast" class="fixed bottom-24 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] uppercase tracking-widest px-4 py-2 opacity-0 transition-opacity duration-300 pointer-events-none z-[200]">Copied to clipboard</div>
+        </div>
+
+        <div id="lightbox" class="fixed inset-0 z-[200] bg-white/95 backdrop-blur-md flex flex-col justify-center items-center opacity-0 pointer-events-none transition-all duration-500" onclick="closeLightbox(event)">
+            <button id="lightbox-close-btn" class="absolute top-8 right-8 text-black font-black uppercase tracking-widest text-xs hover:opacity-50 transition-opacity z-[201]" onclick="closeLightbox(event)">CLOSE</button>
+            <button id="lightbox-prev" class="absolute left-4 md:left-12 top-1/2 -translate-y-1/2 text-black/20 hover:text-black/60 text-5xl md:text-7xl font-light transition-colors z-[202] hidden" onclick="changeImage(event, -1)">&#10094;</button>
+            <button id="lightbox-next" class="absolute right-4 md:right-12 top-1/2 -translate-y-1/2 text-black/20 hover:text-black/60 text-5xl md:text-7xl font-light transition-colors z-[202] hidden" onclick="changeImage(event, 1)">&#10095;</button>
+            <div class="relative w-full h-full max-w-6xl max-h-[85vh] flex flex-col justify-center items-center p-8 pointer-events-none">
+                <img id="lightbox-img" src="" alt="High Res Image" class="max-w-full max-h-full object-contain shadow-2xl scale-95 transition-all duration-500 pointer-events-auto">
+                <div class="mt-8 flex items-center space-x-4">
+                    <p id="lightbox-date" class="font-bold tracking-widest uppercase text-xs text-gray-400"></p>
+                    <span id="lightbox-counter" class="font-bold tracking-widest text-xs text-gray-300 hidden"></span>
+                </div>
+            </div>
+        </div>
+
+        <div id="video-modal" class="fixed inset-0 z-[200] bg-black/95 backdrop-blur-md flex flex-col justify-center items-center opacity-0 pointer-events-none transition-all duration-500" onclick="closeVideoModal(event)">
+            <button id="video-close-btn" class="absolute top-8 right-8 text-white font-black uppercase tracking-widest text-xs hover:opacity-50 transition-opacity z-[201]" onclick="closeVideoModal(event)">CLOSE</button>
+            <div class="relative w-full h-full max-w-5xl max-h-[80vh] flex justify-center items-center p-4 md:p-8 pointer-events-none">
+                <video id="modal-video-player" controls class="max-w-full max-h-full shadow-2xl scale-95 transition-all duration-500 pointer-events-auto rounded-lg outline-none bg-black">
+                    <source src="" type="video/mp4">
+                    您的浏览器不支持视频播放。
+                </video>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

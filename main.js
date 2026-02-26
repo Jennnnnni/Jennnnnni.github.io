@@ -124,40 +124,57 @@ function toggleBio() {
     navigateTo(isBioActive ? 'home' : 'bio');
 }
 
-// 【修复 3】优化移动端复制逻辑
+// 【终极修复】业界最强兼容版复制功能 (完美兼容 iOS Safari/Android)
 function copyToClipboard(text, label) {
-    // 使用现代的剪贴板 API (兼容性更好，尤其是手机端)
+    // 优先尝试现代浏览器的 clipboard API
     if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(text).then(() => {
             showToast(`${label} Copied`);
-        }).catch(err => {
-            console.error('复制失败:', err);
+        }).catch(() => {
             fallbackCopy(text, label);
         });
     } else {
-        // 降级方案
         fallbackCopy(text, label);
     }
 }
 
 function fallbackCopy(text, label) {
-    const input = document.createElement('textarea');
-    input.value = text;
-    // 防止手机端弹出键盘或页面跳动
-    input.setAttribute('readonly', '');
-    input.style.position = 'absolute';
-    input.style.left = '-9999px';
-    document.body.appendChild(input);
-    input.select();
-    input.setSelectionRange(0, 99999); // 兼容 iOS
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    
+    // 避免呼出手机键盘、避免页面跳动
+    textArea.setAttribute('readonly', '');
+    textArea.style.position = 'fixed'; // 防止页面滚动
+    textArea.style.top = '-9999px';
+    textArea.style.left = '-9999px';
+    textArea.style.fontSize = '16px'; // 防止 iOS Safari 自动缩放
+    
+    document.body.appendChild(textArea);
+    
+    // 针对 iOS 特殊处理选择逻辑
+    if (navigator.userAgent.match(/ipad|iphone/i)) {
+        const range = document.createRange();
+        range.selectNodeContents(textArea);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        textArea.setSelectionRange(0, 999999);
+    } else {
+        textArea.select();
+    }
     
     try {
-        document.execCommand('copy');
-        showToast(`${label} Copied`);
+        const successful = document.execCommand('copy');
+        if (successful) {
+            showToast(`${label} Copied`);
+        } else {
+            console.error('复制失败');
+        }
     } catch (err) {
-        console.error('降级复制失败:', err);
+        console.error('降级复制报错:', err);
     }
-    document.body.removeChild(input);
+    
+    document.body.removeChild(textArea);
 }
 
 function showToast(message) {

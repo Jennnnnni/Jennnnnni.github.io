@@ -124,16 +124,45 @@ function toggleBio() {
     navigateTo(isBioActive ? 'home' : 'bio');
 }
 
+// 【修复 3】优化移动端复制逻辑
 function copyToClipboard(text, label) {
+    // 使用现代的剪贴板 API (兼容性更好，尤其是手机端)
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+            showToast(`${label} Copied`);
+        }).catch(err => {
+            console.error('复制失败:', err);
+            fallbackCopy(text, label);
+        });
+    } else {
+        // 降级方案
+        fallbackCopy(text, label);
+    }
+}
+
+function fallbackCopy(text, label) {
     const input = document.createElement('textarea');
     input.value = text;
+    // 防止手机端弹出键盘或页面跳动
+    input.setAttribute('readonly', '');
+    input.style.position = 'absolute';
+    input.style.left = '-9999px';
     document.body.appendChild(input);
     input.select();
-    document.execCommand('copy');
-    document.body.removeChild(input);
+    input.setSelectionRange(0, 99999); // 兼容 iOS
     
+    try {
+        document.execCommand('copy');
+        showToast(`${label} Copied`);
+    } catch (err) {
+        console.error('降级复制失败:', err);
+    }
+    document.body.removeChild(input);
+}
+
+function showToast(message) {
     const toast = document.getElementById('copy-toast');
-    toast.textContent = `${label} Copied`;
+    toast.textContent = message;
     toast.style.opacity = '1';
     setTimeout(() => { toast.style.opacity = '0'; }, 2000);
 }
